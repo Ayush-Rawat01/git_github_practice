@@ -1,17 +1,23 @@
-name : print hello world and current date
-on : 
-  push : 
-    branches : ["main"]
+name: print hello world and current date
+on:
+  push:
+    branches: ["main"]
 
-jobs : 
+jobs:
   print-hello-world:
-    runs-on : ubuntu-latest
-    steps : 
-      - name : executing script and date
-        run : |
+    env:
+      MY_NAME: "AYUSH"
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, ubuntu-22.04]
+
+    runs-on: { { matrix.os } }
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: executing script and date
+        run: |
           echo "Hello, World!"
           date
-          
-        
-        
-    
+          echo "My name is $MY_NAME!"
