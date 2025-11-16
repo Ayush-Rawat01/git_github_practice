@@ -1,4 +1,4 @@
-name : print hello world
+name : print hello world and current date
 on : 
   push : 
     branches : ["main"]
@@ -7,6 +7,11 @@ jobs :
   print-hello-world:
     runs-on : ubuntu-latest
     steps : 
-      - name : executing script
-        run : echo "Hello world"
+      - name : executing script and date
+        run : |
+          echo "Hello, World!"
+          date
+          
+        
+        
     
