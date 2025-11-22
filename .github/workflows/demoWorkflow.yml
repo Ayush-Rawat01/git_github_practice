@@ -4,11 +4,13 @@ on:
     branches: [main]
 
 jobs:
-  my-job:
+  docker-test:
     runs-on: self-hosted
     steps:
-      - name: check docker version
-        run: echo "Docker version is:" && docker --version
-      
-      - name: check adb version
-        run: echo "ADB version is:" && adb --version
+      - name: Check out repository
+        uses: actions/checkout@v3
+      - name: pulling an image
+        run: docker pull hello-world
+      - name: running a container
+        run: docker run hello-world
+  
