@@ -1,16 +1,10 @@
-name: demo
-on:
-  push:
-    branches: [main]
+name: Docker Build Test
+on: [push]
 
 jobs:
   docker-test:
     runs-on: self-hosted
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v3
-      - name: pulling an image
-        run: docker pull hello-world
-      - name: running a container
-        run: docker run hello-world
-  
+      - uses: actions/checkout@v3
+      - run: docker build -t myimage .
+      - run: docker images
