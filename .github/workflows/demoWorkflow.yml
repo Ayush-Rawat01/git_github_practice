@@ -9,7 +9,6 @@ jobs:
     steps:
       - name: check docker version
         run: echo "Docker version is:" && docker --version
-      - name: check node version
-        run: echo "Node version is:" && node --version
+      
       - name: check adb version
         run: echo "ADB version is:" && adb --version
